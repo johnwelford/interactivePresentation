@@ -53,7 +53,8 @@ body {
 .reveal .slides section .fragment {
   opacity: 0;
   visibility: hidden;
-  transition: all .2s ease; }
+  transition: all .2s ease;
+  }
   .reveal .slides section .fragment.visible {
     opacity: 1;
     visibility: inherit; }
@@ -138,7 +139,8 @@ body {
 
 .reveal .slides section .fragment.fade-in-then-semi-out {
   opacity: 0;
-  visibility: hidden; }
+  /* visibility: hidden; */
+  }
   .reveal .slides section .fragment.fade-in-then-semi-out.visible {
     opacity: 0.5;
     visibility: inherit; }
@@ -147,31 +149,79 @@ body {
     visibility: inherit; }
 
 .reveal .slides section .fragment.highlight-red,
+.reveal .slides section .fragment.fill-red,
+.reveal .slides section .fragment.stroke-red,
 .reveal .slides section .fragment.highlight-current-red,
+.reveal .slides section .fragment.fill-current-red,
+.reveal .slides section .fragment.stroke-current-red,
 .reveal .slides section .fragment.highlight-green,
+.reveal .slides section .fragment.fill-green,
+.reveal .slides section .fragment.stroke-green,
 .reveal .slides section .fragment.highlight-current-green,
+.reveal .slides section .fragment.fill-current-green,
+.reveal .slides section .fragment.stroke-current-green,
 .reveal .slides section .fragment.highlight-blue,
-.reveal .slides section .fragment.highlight-current-blue {
+.reveal .slides section .fragment.fill-blue,
+.reveal .slides section .fragment.stroke-blue,
+.reveal .slides section .fragment.highlight-current-blue,
+.reveal .slides section .fragment.fill-current-blue,
+.reveal .slides section .fragment.stroke-current-blue {
   opacity: 1;
   visibility: inherit; }
 
 .reveal .slides section .fragment.highlight-red.visible {
   color: #ff2c2d; }
 
+.reveal .slides section .fragment.fill-red.visible {
+  fill: #ff2c2d; }
+
+.reveal .slides section .fragment.stroke-red.visible {
+  stroke: #ff2c2d; }
+    
 .reveal .slides section .fragment.highlight-green.visible {
   color: #17ff2e; }
+
+.reveal .slides section .fragment.fill-green.visible {
+  fill: #17ff2e; }
+
+.reveal .slides section .fragment.stroke-green.visible {
+  stroke: #17ff2e; }
 
 .reveal .slides section .fragment.highlight-blue.visible {
   color: #1b91ff; }
 
+.reveal .slides section .fragment.fill-blue.visible {
+  fill: #1b91ff; }
+
+.reveal .slides section .fragment.stroke-blue.visible {
+  stroke: #1b91ff; }
+
 .reveal .slides section .fragment.highlight-current-red.current-fragment {
   color: #ff2c2d; }
+  
+.reveal .slides section .fragment.fill-current-red.current-fragment {
+  fill: #ff2c2d; }
 
+.reveal .slides section .fragment.stroke-current-red.current-fragment {
+  stroke: #ff2c2d; }
+    
 .reveal .slides section .fragment.highlight-current-green.current-fragment {
   color: #17ff2e; }
 
+.reveal .slides section .fragment.fill-current-green.current-fragment {
+  fill: #17ff2e; }
+
+.reveal .slides section .fragment.stroke-current-green.current-fragment {
+  stroke: #17ff2e; }
+
 .reveal .slides section .fragment.highlight-current-blue.current-fragment {
   color: #1b91ff; }
+
+.reveal .slides section .fragment.fill-current-blue.current-fragment {
+  fill: #1b91ff; }
+
+.reveal .slides section .fragment.stroke-current-blue.current-fragment {
+  stroke: #1b91ff; }
 
 /*********************************************
  * DEFAULT ELEMENT STYLES
