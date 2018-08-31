@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Interactive Presentation Demo</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" data-external="slides.html#section.client"> </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				transition: 'slide',
+				backgroundTransition: 'slide', // set background transitions to match 
+
+				controls: false, //turn controls off for the client
+				keyboard: false,
+				touch: false,
+				history: false,
+
+				multiplex: {
+					secret: null, // null so the clients does not have control of the master
+					id: '626c5fb1f2331dee', // id, obtained from socket.io server
+					url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh' // Location of socket.io server
+				},
+
+				dependencies: [
+					{ src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+					{ src: 'plugin/inline_svg.js', async: true  },
+					{ src: 'plugin/multiplex/client.js', async: true },
+					{ src: 'plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external],[data-external-replace]' ); } },
+// 					{ src: 'plugin/markdown/marked.js' },
+// 					{ src: 'plugin/markdown/markdown.js' },
+// 					{ src: 'plugin/notes/notes.js', async: true },
+// 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
