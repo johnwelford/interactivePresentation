@@ -1,0 +1,226 @@
+<section class="master client">
+    <section>
+        <h1>Interactive presentation techniques</h1> 
+    </section>
+    <section>
+        <p>This is a demonstration presentation created in html using the <a href="https://revealjs.com">reveal.js</a> framework.</p>
+        <p>It tests out some advanced techniques to enable audience interactivity and participation, as well as exploring some more engaging aspects of presentation structure.</p>
+        <p>There are also loads of cool <a href="https://github.com/hakimel/reveal.js/wiki/Plugins,-Tools-and-Hardware"">plugins</a> for Reveal.</p>
+    </section>
+</section>
+
+<section class="master client">
+    <section>
+        <h2>Navigation</h2>
+        <small>(Press down)</small>
+    </section>
+    <section>
+        <p>Combining vertical scrolling with horizontal allows similar ideas to be grouped together in short sections.</p>
+        <p>Whilst still allowing fast progress if the presenter wishes to skip certain details.</p>
+        <p>Sliding transitions help to show the distinction.</p>
+    </section>
+</section>
+
+<section class="master">
+    <section>
+        <h2>Audience view</h2>
+    </section>
+    <section>
+        <p>Giving your audience access to your presentation on their own device is pretty cool, especially if it contains interactive elements.</p>
+        <p>This is possible using the reveal.js <a href="https://github.com/hakimel/reveal.js#multiplexing">multiplexing</a> feature.</p>
+        <p>To avoid having to develop two versions simultaneously it is worth developing the bulk of the presentation prior to splitting into master and client versions.
+        Or alternatively maintain your slide details separately from your setup by using the <a href="https://github.com/janschoepke/reveal_external">external</a> plugin, then reuse the slides in both the client and master files.</p>
+        <p>You may want to <a href="https://github.com/G1305/reveal_external#load-fragments">load fragments</a> of the external file so that there can be slight differences between the master and client versions.</p>
+    </section>
+    <section>
+        <p>Try opening an <a href="client.html#/2/2" target="_blank">example client</a> version of this <b>master</b> presentation in a separate window.</p>
+        <p>Keyboard, touch, and button navigation can be disabled within the client such that progression is completely slaved to the master.</p>
+    </section>					
+    <section>
+        <p>The client presentation will need to be hosted on a server where your audience can access it. Including the URL on the title slide will allow the audience to load it up before the presentation starts.</p>
+        <p>This technique will be necessary when we come to implement the next ideas.</p>
+    </section>					
+</section>
+
+<section class="client">
+    <section>
+        <h2>Audience view</h2>
+    </section>
+    <section>
+        <p>Giving your audience access to your presentation on their own device is pretty cool, especially if it contains interactive elements.</p>
+        <p>This is possible using the reveal.js <a href="https://github.com/hakimel/reveal.js#multiplexing">multiplexing</a> feature.</p>
+        <p>To avoid having to develop two versions simultaneously it is worth developing the bulk of the presentation prior to splitting into master and client versions.
+        Or alternatively maintain your slide details separately from your setup by using the <a href="https://github.com/janschoepke/reveal_external">external</a> plugin, then reuse the slides in both the client and master files.</p>
+        <p>You may want to <a href="https://github.com/G1305/reveal_external#load-fragments">load fragments</a> of the external file so that there can be slight differences between the master and client versions.</p>
+    </section>
+    <section>
+        <p>This is the <b>client</b> presentation, with all navigation disabled.</p>
+        <p>Slides are based on the same <a href="https://github.com/janschoepke/reveal_external">external</a> file, but with certain changes for the client by using <a href="https://github.com/G1305/reveal_external#load-fragments">load fragments</a> CSS selections.</p>
+    </section>					
+    <section>
+        <p>The client presentation will need to be hosted on a server where your audience can access it. Including the URL on the title slide will allow the audience to load it up before the presentation starts.</p>
+        <p>This technique will be necessary when we come to implement the next ideas.</p>
+    </section>					
+</section>
+
+<section class="master client">
+    <section>
+        <h2>Interactive slides</h2>
+    </section>
+    <section>
+        <p>Reveal.js allows the inclusion of <a href="https://github.com/hakimel/reveal.js#iframe-backgrounds">web pages as slide backgrounds</a>. With the addition of the <code>data-background-interactive</code> attribute the presenter or audience will be able to interact with the web page. This allows both for both demonstration and audience involvement without having to leave the presentation.</p>
+        <p>It's worth noting that once the interactive background has been clicked upon, you will only be able to navigate off the slide using the on-screen arrows (so don't turn these off!).</p>
+    </section>
+    <section data-background-iframe="http://mbtaviz.github.io/" data-background-interactive>
+    </section>
+</section>
+
+<section class="master">
+    <section>
+        <h2>Live polls</h2>
+    </section>
+    <section>
+        <p>Now that the audience has your presentation on their own device, why not find out what they're thinking?</p>
+        <p>There are <a href="https://www.presentation-guru.com/how-to-get-instant-feedback-from-your-audience/">quite a few</a> tools out there that allow you to include polls and quizes to get instant feedback within a presentation. Unfortunately most of these require the use of particular presentation software, and the slicker ones also charge a fee for commercial use.</p>
+        <p>We'll look at pulling the appropriate parts of <a href="http://directpoll.com/">directpoll</a> questions and answers into our presentation. This is free and supports up to 500 voters, however the technique should work for other web-based services as well.</p>
+        <p>First go to <a href="http://directpoll.com/">directpoll.com</a> and set up a poll with one or more questions. Once you save it you will get a few different links to the poll which you can embed in the presentation.</p>
+    </section>
+    <section>
+        <p>On this slide we use a hidden <code>iframe</code> that includes the directpoll 'Stop and reset poll now' URL (in the advanced links section) in order to reset the poll each time the presentation is run.</p>
+        <p>The next two slides in the master presentation (this is the <b>master</b>) will be the question and results, based on using lazy loading along with the directpoll 'Step to a specific question and show result' URLs.</p>
+        <p>The next two slides in the <a href="client.html#/4/2" target="_blank">client</a> will be the polling form, based on the directpoll 'Vote' link.</p>
+        <!-- This is hidden and also not lazy-loaded, so that it only runs and resets when the slides are opened/refreshed. Switching to lazy-loading would reset results every time this slide was returned to. -->
+        <iframe src="https://directpoll.com/r?XDbzPBdIoNwJmL00qMv6S4ik6XT6wI4d2NnMmPcIrBx" style="width:0; height:0; border:0; border:none; display:none !important"></iframe>
+    </section>
+    <section>
+        <iframe class="stretch" data-src="https://directpoll.com/r?XDbzPBdJ2bAX0ZEE4a9KgIwyKlhKAWIrGb1a0dqW5PB" style="pointer-events: none;"></iframe>
+    </section>
+    <section> 
+        <iframe class="stretch" data-src="https://directpoll.com/r?XDbzPBdJ3cBY1aFF5bALhJxzLmiLBXJsHc2b1erX6QC" style="pointer-events: none;"></iframe>
+    </section>
+    <section>
+        <p>In this <b>master</b> slide there is a hidden <code>iframe</code> to prompt a question with lots of answers but not show the results.</p>
+        <p>This allows people to vote in an unbiased way on the client slide, and also allows the presentation to be used to display the question however we like.</p>
+        <p>On the next slide we can then show the results, in both the master and client presentations, using the directpoll 'Result of a specific question' URL. It is worth ensure that these have <code>style="pointer-events: none;"</code> so that the audience do not receive control of the poll.</p>
+        <iframe data-src="https://directpoll.com/r?XDbzPBdJ4dCZ2bGG6cBMiKy0MnjMCYKtId3c2fsY7RD" style="width:0; height:0; border:0; border:none; display:none !important"></iframe>
+    </section>
+    <section> 
+        <iframe class="stretch" data-src="https://directpoll.com/r?XDbzPBdXCR2KAcVRBWvJgXKpMypU7g8dCOBd1Rsa0S" style="pointer-events: none;"></iframe>
+    </section>
+</section>
+
+<section class="client">
+    <section>
+        <h2>Live polls</h2>
+    </section>
+    <section>
+        <p>Now that the audience has your presentation on their own device, why not find out what they're thinking?</p>
+        <p>There are <a href="https://www.presentation-guru.com/how-to-get-instant-feedback-from-your-audience/">quite a few</a> tools out there that allow you to include polls and quizes to get instant feedback within a presentation. Unfortunately most of these require the use of particular presentation software, and the slicker ones also charge a fee for commercial use.</p>
+        <p>We'll look at pulling the appropriate parts of <a href="http://directpoll.com/">directpoll</a> questions and answers into our presentation. This is free and supports up to 500 voters, however the technique should work for other web-based services as well.</p>
+        <p>First go to <a href="http://directpoll.com/">directpoll.com</a> and set up a poll with one or more questions. Once you save it you will get a few different links to the poll which you can embed in the presentation.</p>
+    </section>
+    <section>
+        <p>The next two slides in the master presentation (this is the <b>client</b>) will be the question and results, based on using lazy loading and <code>viewDistance: 1</code> along with the directpoll 'Step to a specific question and show result' URLs.</p>
+        <p>The next two slides in this client will be the polling form, based on the directpoll 'Vote' link.</p>
+    </section>
+    <section>
+        <iframe class="stretch" data-src="https://directpoll.com/v?XDVhEtZQ2NsM2ggGvXIrBxCc3F8gRoT0"></iframe>
+    </section>
+    <section> 
+        <iframe class="stretch" data-src="https://directpoll.com/v?XDVhEtZQ2NsM2ggGvXIrBxCc3F8gRoT0"></iframe>
+    </section>
+    <section> 
+        <iframe class="stretch" data-src="https://directpoll.com/v?XDVhEtZQ2NsM2ggGvXIrBxCc3F8gRoT0"></iframe>
+    </section>
+    <section> 
+        <iframe class="stretch" data-src="https://directpoll.com/r?XDbzPBdXCR2KAcVRBWvJgXKpMypU7g8dCOBd1Rsa0S" style="pointer-events: none;"></iframe>
+    </section>
+</section>
+
+<section class="master">
+    <section>
+        <h2>Questionnaires</h2>
+    </section>
+    <section>
+        <p>What if we want to ask our audience multiple questions at once? Well we could perhaps present them with a <a href="https://www.google.com/forms/about/">Google forms</a> questionnaire to fill in.</p>
+        <p>The next <a href="client.html#/5/1" target="_blank">client</a> slide (this is the <b>master</b>) shows an example embedded form. Whilst the master slide shows an example chart generated from the form responses (note that this needs some code to make it refresh regularly and show changes).</p>
+    </section>
+    <section reloadInterval="5000">
+        <iframe id="result1" copyOf="result2" width="870" height="540" seamless frameborder="0" scrolling="no" data-src="https://docs.google.com/spreadsheets/d/12I8RKeBScEoF9o-slDsIhvzrpD1SuYl6VMduCOmqjCE/htmlembed/sheet?gid=2094764228&range=F4"></iframe>
+        <iframe id="result2" copyOf="result1" width="870" height="540" seamless frameborder="0" scrolling="no" data-src="https://docs.google.com/spreadsheets/d/12I8RKeBScEoF9o-slDsIhvzrpD1SuYl6VMduCOmqjCE/htmlembed/sheet?gid=2094764228&range=F4" style="display: none;"></iframe> <!-- duplicate frame to swap to avoid flicker -->
+    </section>
+</section>
+
+<section class="client">
+    <section>
+        <h2>Questionnaires</h2>
+    </section>
+    <section>
+        <p>What if we want to ask our audience multiple questions at once? Well we could perhaps present them with a <a href="https://www.google.com/forms/about/">Google forms</a> questionnaire to fill in.</p>
+        <p>The next client slide (this is the <b>client</b>) shows an example embedded form. Whilst the master slide shows an example chart generated from the form responses (note that this needs some code to make it refresh regularly and show changes).</p>
+    </section>
+    <section data-background-iframe="https://docs.google.com/forms/d/e/1FAIpQLSdBCfmzgmcmsbZhWs-BR6l49-nYMydSY_pfTMe3Xbubhq5kAQ/viewform?embedded=true" data-background-interactive>
+    </section>
+</section>
+
+<section class="master client">
+    <section>
+        <h2>Inkscape</h2>
+    </section>
+</section>
+
+<section class="master client">
+    <section>
+        <h2>SVG fragments</h2>
+    </section>
+    <section>
+        <p>Reveal.js provides some neat features for highlighting elements on a slide called <a href="https://github.com/hakimel/reveal.js#fragments">Fragments</a>.</p>
+        <p>Unfortunately this does not work with svg files.</p>
+        <p>However, some improvements to a <a href="https://github.com/ranr01/reveal-inline-svg">reveal-inline-svg</a> plugin allow us to achieve this.</p>
+        <p>The next slide demonstrates a range of fragments operating on both text and SVG simultaneously.</p>
+        <small>Note that for the fragment CSS to be able to override the SVG values, SVG must be styled using attributes rather than inline styles. If generating from Inkscape then there is an option for this when saving as 'Optimised SVG'</small>
+    </section>
+
+    <section>
+        <div style="position: absolute; right: 0px; top: 0px;">
+            <object id="svg1" data="drawingOpt.svg" type="image/svg+xml">
+                <param id="greenStar" class="fragment grow" data-fragment-index="1">
+                <param id="redRect" class="fragment shrink" data-fragment-index="2">
+                <param id="yellowCirc" class="fragment fade-out" data-fragment-index="3">
+                <param id="turqStar" class="fragment fade-up" data-fragment-index="4">
+                <param id="orangeEllip" class="fragment fade-in-then-out" data-fragment-index="5">
+                <param id="greyRect" class="fragment fade-in-then-semi-out" data-fragment-index="6">
+                <param id="blackCirc" class="fragment fill-current-blue" data-fragment-index="7">
+                <param id="blackStar" class="fragment fill-red" data-fragment-index="8">
+                <param id="purpleCurve" class="fragment stroke-green" data-fragment-index="9">
+                <param id="greenSpir" class="fragment stroke-blue" data-fragment-index="10">
+            </object>
+        </div>
+        <small style="display: block;">
+        <p class="fragment grow" data-fragment-index="1">grow green star</p>
+        <p class="fragment shrink" data-fragment-index="2">shrink red square</p>
+        <p class="fragment fade-out" data-fragment-index="3">fade-out yellow circle</p>
+        <p class="fragment fade-up" data-fragment-index="4">fade-up turquoise star</p>
+        <p class="fragment fade-in-then-out" data-fragment-index="5">fades in, then out orange ellipse</p>
+        <p class="fragment fade-in-then-semi-out" data-fragment-index="6">fades in grey rect, then obfuscate</p>
+        <p class="fragment highlight-current-blue" data-fragment-index="7">temporarily fill the black circle blue</p>
+        <p class="fragment highlight-red" data-fragment-index="8">fill the black star red</p>
+        <p class="fragment highlight-green" data-fragment-index="9">turn the purple curve green</p>
+        <p class="fragment highlight-blue" data-fragment-index="10">turn the green spiral blue</p>
+        </small>
+    </section>    
+</section>
+
+<section class="master client">
+    <section>
+        <h2>Automatic timings</h2>
+        <small>(Press down)</small>
+    </section>
+</section>
+
+<section class="master client">
+    <section>
+        <h2>Explorable explanations</h2>
+        <small>(Press down)</small>
+    </section>
+</section>
