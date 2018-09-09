@@ -165,12 +165,6 @@
 
 <section class="master client">
     <section>
-        <h2>Inkscape</h2>
-    </section>
-</section>
-
-<section class="master client">
-    <section>
         <h2>SVG fragments</h2>
     </section>
     <section>
@@ -178,12 +172,11 @@
         <p>Unfortunately this does not work with svg files.</p>
         <p>However, some improvements to a <a href="https://github.com/ranr01/reveal-inline-svg">reveal-inline-svg</a> plugin allow us to achieve this.</p>
         <p>The next slide demonstrates a range of fragments operating on both text and SVG simultaneously.</p>
-        <small>Note that for the fragment CSS to be able to override the SVG values, SVG must be styled using attributes rather than inline styles. If generating from Inkscape then there is an option for this when saving as 'Optimised SVG'</small>
+        <small>Note that for the fragment CSS to be able to override the SVG values, SVG must be styled using attributes rather than inline styles. If generating from Inkscape then there is an option for this when saving as 'Optimised SVG'.</small>
     </section>
-
     <section>
         <div style="position: absolute; right: 0px; top: 0px;">
-            <object id="svg1" data="drawingOpt.svg" type="image/svg+xml">
+            <object data="drawingOpt.svg" type="image/svg+xml" onload="makeInline(this)">
                 <param id="greenStar" class="fragment grow" data-fragment-index="1">
                 <param id="redRect" class="fragment shrink" data-fragment-index="2">
                 <param id="yellowCirc" class="fragment fade-out" data-fragment-index="3">
@@ -209,6 +202,29 @@
         <p class="fragment highlight-blue" data-fragment-index="10">turn the green spiral blue</p>
         </small>
     </section>    
+</section>
+
+<section class="master client">
+    <section>
+        <h2>Element zoom</h2>
+    </section>
+    <section>
+        <p>Reveal.js comes with <a href="https://lab.hakim.se/zoom-js/">zoom.js</a> built in. By default this allows click zooming of preset extent on the clicked point.</p>
+        <p>We can change use this to zoom to fixed elements within a slide, including SVG elements that have been included inline. These elements don't even need to be visible, and therefore we can use hidden boxes to group areas of an image.</p>
+        <p>By embedding these zoom requests within a fragment we can step through and highlight speific areas of complex slides.</p>
+    </section>
+    <section>
+        <div style="position: absolute; right: 0px; top: 0px;">
+            <object data="drawingOpt.svg" type="image/svg+xml" onload="makeInline(this)">
+           </object>
+        </div>
+        <small style="display: block;">
+        <p class="fragment fade-in" data-fragment-index="1" data-zoom="greenStar">zoom to green star</p>
+        <p class="fragment fade-in" data-fragment-index="2" data-zoom="blackStar">zoom to black star</p>
+        <p class="fragment fade-in" data-fragment-index="3" data-zoom="">zoom back out</p>
+        <p class="fragment fade-in" data-fragment-index="4" data-zoom="">zoom to top half</p>
+       </small>
+    </section>      
 </section>
 
 <section class="master client">

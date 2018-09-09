@@ -1,11 +1,12 @@
-document.querySelectorAll("object").forEach(function(e) {
-  e.addEventListener("load", makeInline);
-});
+// document.querySelectorAll("object").forEach(function(e) {
+//   e.addEventListener("load", makeInline);
+// //   console.log(e);
+// });
 
-function makeInline() {
-  var svg = this.contentDocument.documentElement.cloneNode(true);
-  this.parentElement.replaceChild(svg, this); // replace object with inline svg
-  var params = this.querySelectorAll("param");
+function makeInline(e) {
+  var svg = e.contentDocument.documentElement.cloneNode(true);
+  e.parentElement.replaceChild(svg, e); // replace object with inline svg
+  var params = e.querySelectorAll("param");
   params.forEach(function(p){ // apply formating according to params
     var svg_e = svg.querySelector("#".concat(p.getAttribute("id")));
     var attrs = p.attributes;
@@ -15,5 +16,3 @@ function makeInline() {
      }
   });
 };
-
-console.log("test")
