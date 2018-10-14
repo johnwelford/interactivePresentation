@@ -8,6 +8,7 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme.css">
+		<link rel="stylesheet" href="css/countdown.css">
 
 	</head>
 	<body>
@@ -28,6 +29,8 @@
 				touch: false,
 				history: false,
 
+				autoSlideStoppable: false, // ensure that auto transitions continue to work even whilst navigating
+
 				multiplex: {
 					secret: null, // null so the clients does not have control of the master
 					id: '626c5fb1f2331dee', // id, obtained from socket.io server
@@ -46,6 +49,28 @@
 // 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+			
+			var countdownTimer;
+			var countdown
+			Reveal.addEventListener('slidechanged', function(event) { // call start timers on slide change
+				clearInterval(countdownTimer);
+				countdown = +event.currentSlide.getAttribute('data-autoslide')/1000;
+				var countdownNumberEl = Reveal.getCurrentSlide().querySelector('#countdown-number');
+				if (countdown&&countdownNumberEl) {
+					countdownNumberEl.textContent = countdown;
+					countdownTimer = createCountdown(countdownNumberEl, 1000);
+					countdownEl = Reveal.getCurrentSlide().querySelector('#countdown');
+					countdownEl.removeAttribute("id"); // remove and readd id to restart animation
+					void countdownEl.offsetWidth;
+					countdownEl.setAttribute("id","countdown");
+					countdownEl.querySelector('circle').style.animationDuration = countdown+"s";
+				};			
+			});
+			function createCountdown(countdownNumberEl, interval) {
+				return setInterval(function () {
+					countdownNumberEl.textContent = --countdown;
+				}, interval);
+			}
 		</script>
 	</body>
 </html>

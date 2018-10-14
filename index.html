@@ -8,6 +8,7 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme.css">
+		<link rel="stylesheet" href="css/countdown.css">
 
 	</head>
 	<body>
@@ -29,6 +30,8 @@
 				history: true,
 
 				viewDistance: 3, // use lazy loading to force updates to polls to happen only when the slide is active 
+
+				autoSlideStoppable: false, // ensure that auto transitions continue to work even whilst navigating
 
 				multiplex: {
 					secret: '15350195538036439251', // Gives this (the master) control of the presentation
@@ -65,19 +68,6 @@
 // 				if (reloadInterval) iframeInterval = window.setInterval(reloadSlideIFrames, +reloadInterval)
 // 				else  clearInterval(iframeInterval);
 // 			} );
-// 			function reloadSlideIFrames() { 
-// 				var iframes = Reveal.getCurrentSlide().getElementsByTagName("iframe");
-// 				for (var i = 0; i < iframes.length; i++) {
-// 					if (iframes[i].style.display = 'none') {
-// 						iframes[i].src += '';
-// 						iframes[i].onload = function() {
-// 							this.style.display = 'block';
-// 							document.getElementById(this.getAttribute('copyOf')).onload = null;
-// 							document.getElementById(this.getAttribute('copyOf')).style.display = 'none';
-// 						};
-// 					};
-// 				};
-// 			}
 			
 			// add listeners for zooming on fragments
 			Reveal.addEventListener( 'fragmentshown', function( event ) {
@@ -92,6 +82,27 @@
 				// event.fragment = the fragment DOM element
 			} );
 
+			var countdownTimer;
+			var countdown
+			Reveal.addEventListener('slidechanged', function(event) { // call start timers on slide change
+				clearInterval(countdownTimer);
+				countdown = +event.currentSlide.getAttribute('data-autoslide')/1000;
+				var countdownNumberEl = Reveal.getCurrentSlide().querySelector('#countdown-number');
+				if (countdown&&countdownNumberEl) {
+					countdownNumberEl.textContent = countdown;
+					countdownTimer = createCountdown(countdownNumberEl, 1000);
+					countdownEl = Reveal.getCurrentSlide().querySelector('#countdown');
+					countdownEl.removeAttribute("id"); // remove and readd id to restart animation
+					void countdownEl.offsetWidth;
+					countdownEl.setAttribute("id","countdown");
+					countdownEl.querySelector('circle').style.animationDuration = countdown+"s";
+				};			
+			});
+			function createCountdown(countdownNumberEl, interval) {
+				return setInterval(function () {
+					countdownNumberEl.textContent = --countdown;
+				}, interval);
+			}
 		</script>
 	</body>
 </html>

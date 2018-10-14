@@ -143,11 +143,13 @@
     </section>
     <section>
         <p>What if we want to ask our audience multiple questions at once? Well we could perhaps present them with a <a href="https://www.google.com/forms/about/">Google forms</a> questionnaire to fill in.</p>
-        <p>The next <a href="client.html#/5/1" target="_blank">client</a> slide (this is the <b>master</b>) shows an example embedded form. Whilst the master slide shows an example chart generated from the form responses (note that this needs some code to make it refresh regularly and show changes).</p>
+        <p>The next <a href="client.html#/5/1" target="_blank">client</a> slide (this is the <b>master</b>) shows an example embedded form. Unfortunately it is tricky to make charts based on the results auto refresh, so the master slide simply shows a prompt. Finally the results are shown in a chart generated from the form responses on both the master and client final slide.</p>
     </section>
-    <section reloadInterval="5000">
-        <iframe id="result1" copyOf="result2" width="870" height="540" seamless frameborder="0" scrolling="no" data-src="https://docs.google.com/spreadsheets/d/12I8RKeBScEoF9o-slDsIhvzrpD1SuYl6VMduCOmqjCE/htmlembed/sheet?gid=2094764228&range=F4"></iframe>
-        <iframe id="result2" copyOf="result1" width="870" height="540" seamless frameborder="0" scrolling="no" data-src="https://docs.google.com/spreadsheets/d/12I8RKeBScEoF9o-slDsIhvzrpD1SuYl6VMduCOmqjCE/htmlembed/sheet?gid=2094764228&range=F4" style="display: none;"></iframe> <!-- duplicate frame to swap to avoid flicker -->
+    <section>
+        <p>Please fill in the questionnaire shown in your <a href="client.html#/5/1" target="_blank">client</a> slide.</p>
+    </section>
+    <section>
+        <iframe width="870" height="540" seamless frameborder="0" scrolling="no" data-src="https://docs.google.com/spreadsheets/d/12I8RKeBScEoF9o-slDsIhvzrpD1SuYl6VMduCOmqjCE/htmlembed/sheet?gid=2094764228&range=F4"></iframe>
     </section>
 </section>
 
@@ -160,6 +162,9 @@
         <p>The next client slide (this is the <b>client</b>) shows an example embedded form. Whilst the master slide shows an example chart generated from the form responses (note that this needs some code to make it refresh regularly and show changes).</p>
     </section>
     <section data-background-iframe="https://docs.google.com/forms/d/e/1FAIpQLSdBCfmzgmcmsbZhWs-BR6l49-nYMydSY_pfTMe3Xbubhq5kAQ/viewform?embedded=true" data-background-interactive>
+    </section>
+    <section>
+        <iframe width="870" height="540" seamless frameborder="0" scrolling="no" data-src="https://docs.google.com/spreadsheets/d/12I8RKeBScEoF9o-slDsIhvzrpD1SuYl6VMduCOmqjCE/htmlembed/sheet?gid=2094764228&range=F4"></iframe>
     </section>
 </section>
 
@@ -207,6 +212,7 @@
 <section class="master client">
     <section>
         <h2>Element zoom</h2>
+        <small>(Not yet working...)</small>
     </section>
     <section>
         <p>Reveal.js comes with <a href="https://lab.hakim.se/zoom-js/">zoom.js</a> built in. By default this allows click zooming of preset extent on the clicked point.</p>
@@ -230,13 +236,33 @@
 <section class="master client">
     <section>
         <h2>Automatic timings</h2>
-        <small>(Press down)</small>
+    </section>
+    <section>
+        <p>Sometimes it would be useful for slides to advance automatically once another aspect is complete. For example, you may wish to only allow a short period for questionnaire responses.</p>
+        <p>Reveal.js conveniently allows <a href="https://github.com/hakimel/reveal.js#auto-sliding">auto-sliding</a> built in. If we leave this set to 0 for the whole presentation (default — manual transitions), we can still enable it for single slides by setting <code>data-autoslide="5000"</code> for the slide or fragments within it.</p>
+    </section>
+    <section data-autoslide="5000">
+        <p>This slide will automatically transition in 5 seconds.</p>
+    </section>
+    <section data-autoslide="8000">
+        <p>We can also add a countdown timer so that the audience knows what's happening.</p>
+        <p>This slide will automatically transition in...</p>
+        <div id="countdown">
+          <div id="countdown-number"></div>
+          <svg>
+            <circle r="65" cx="75" cy="75"></circle>
+          </svg>
+        </div>
+        <small>Timer based on the codepen <a href="https://codepen.io/carsy/pen/VvqJwm">here</a> by Zé Bateira.</small>
     </section>
 </section>
 
 <section class="master client">
     <section>
         <h2>Explorable explanations</h2>
-        <small>(Press down)</small>
+        <small>(Not yet tested...)</small>
+    </section>
+    <section>
+        <p>Look at using <a href="https://gcalmettes.github.io/reveal.js-d3/demo/#/">reveal.js-d3</a>.</p>
     </section>
 </section>
