@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides" data-external="slides.html#section.client"> </div>
+			<div class="slides" data-external="slides.md#section.client"> </div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
@@ -31,6 +31,10 @@
 
 				autoSlideStoppable: false, // ensure that auto transitions continue to work even whilst navigating
 
+				markdown: { // Options passed into marked
+					smartypants: true
+				},
+
 				multiplex: {
 					secret: null, // null so the clients does not have control of the master
 					id: '626c5fb1f2331dee', // id, obtained from socket.io server
@@ -43,8 +47,8 @@
       				{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/multiplex/client.js', async: true },
 					{ src: 'plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external],[data-external-replace]' ); } },
-// 					{ src: 'plugin/markdown/marked.js' },
-// 					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
 // 					{ src: 'plugin/notes/notes.js', async: true },
 // 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]

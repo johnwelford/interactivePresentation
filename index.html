@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides" data-external="slides.html#section.master"> </div>
+			<div class="slides" data-external="slides.md#section.master"></div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
@@ -33,6 +33,10 @@
 
 				autoSlideStoppable: false, // ensure that auto transitions continue to work even whilst navigating
 
+				markdown: { // Options passed into marked
+					smartypants: true
+				},
+				
 				multiplex: {
 					secret: '15350195538036439251', // Gives this (the master) control of the presentation
 					id: '626c5fb1f2331dee', // id, obtained from socket.io server
@@ -46,8 +50,8 @@
 					{ src: 'plugin/multiplex/master.js', async: true },
 // 					{ src: 'plugin/multiplex/client.js', async: true }, // including this as well allows multiple copies to control one another, however it will get upset with fast slide changes!
 					{ src: 'plugin/external/external.js', condition: function() { return !!document.querySelector( '[data-external],[data-external-replace]' ); } },
-// 					{ src: 'plugin/markdown/marked.js' },
-// 					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
 // 					{ src: 'plugin/notes/notes.js', async: true },
 // 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
